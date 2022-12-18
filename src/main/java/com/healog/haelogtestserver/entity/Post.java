@@ -28,8 +28,7 @@ public class Post extends Timestamped {
     @Column(nullable = false)
     private String content;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "postId")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
 
     public Post(RequestPostDto requestPostDto) {

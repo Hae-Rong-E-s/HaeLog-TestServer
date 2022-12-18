@@ -1,5 +1,6 @@
 package com.healog.haelogtestserver.service;
 
+
 import com.healog.haelogtestserver.dto.RequestCommentDto;
 import com.healog.haelogtestserver.dto.ResponseCommentDto;
 import com.healog.haelogtestserver.entity.Comment;
@@ -18,12 +19,13 @@ public class CommentService {
     private final PostRepository postRepository;
 
     @Transactional
-    public ResponseCommentDto writeComment(Long postId, RequestCommentDto requestCommentDto, String member) {
+    public ResponseCommentDto writeComment(Long postId, RequestCommentDto requestCommentDto) {
+        Post post = checkPost(postId);
 
-        Comment comment = requestCommentDto.toEntity(member);
+        Comment comment = new Comment(requestCommentDto, post);
         commentRepository.save(comment);
 
-        Post post = checkPost(postId);
+
         post.addComment(comment);
 
         return new ResponseCommentDto(comment);
