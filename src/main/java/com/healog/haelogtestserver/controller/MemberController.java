@@ -1,8 +1,8 @@
 package com.healog.haelogtestserver.controller;
 
-import com.haelog.heaelogtestserver.dto.RequestMemberDto;
-import com.haelog.heaelogtestserver.dto.ResponseMessage;
-import com.haelog.heaelogtestserver.service.MemberService;
+import com.healog.haelogtestserver.dto.RequestMemberDto;
+import com.healog.haelogtestserver.dto.ResponseMessage;
+import com.healog.haelogtestserver.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

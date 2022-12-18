@@ -1,10 +1,11 @@
 package com.healog.haelogtestserver.service;
 
-import com.haelog.heaelogtestserver.dto.RequestMemberDto;
-import com.haelog.heaelogtestserver.entity.Member;
-import com.haelog.heaelogtestserver.repository.MemberRepository;
+import com.healog.haelogtestserver.dto.RequestMemberDto;
+import com.healog.haelogtestserver.entity.Member;
+import com.healog.haelogtestserver.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 
 @Service
 @RequiredArgsConstructor
