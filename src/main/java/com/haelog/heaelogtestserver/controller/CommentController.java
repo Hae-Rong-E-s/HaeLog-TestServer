@@ -13,18 +13,18 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @PutMapping("/post/{postId}/comment")
-    public ResponseDto creatComment(@PathVariable Long postId, @RequestBody RequestCreatePost requestCreatePost) {
-
+    @PutMapping("/post/{commentId}/comment")
+    public ResponseDto createComment(@PathVariable Long commentId) {
+        return commentService.createComment(commentId);
     }
 
     @PutMapping("/post/comment/{commentId}")
-    public ResponseDto updatePost(@PathVariable Long commentId, @RequestBody RequestUpdatePost requestUpdatePost) {
-
+    public ResponseDto updateComment(@PathVariable Long commentId) {
+        return commentService.updateComment(commentId);
     }
 
     @DeleteMapping("/post/comment/{commentId}")
-    public ResponseDto deletePost(@PathVariable Long commentId, @RequestBody RequestDeletePost requestDeletePost) {
-
+    public ResponseDto deletePost(@PathVariable Long commentId) {
+        return commentService.deleteComment(commentId);
     }
 }
