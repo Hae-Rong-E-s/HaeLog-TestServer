@@ -1,5 +1,6 @@
 package com.healog.haelogtestserver.entity;
 
+import com.healog.haelogtestserver.dto.RequestCommentDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,17 +26,26 @@ public class Comment extends Timestamped {
     @Column(nullable = false)
     String username;
 
-    @OneToMany
-    @Builder.Default
-    @JoinColumn(name = "commentId")
-    private List<Comment> commentList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post post;
 
-    public void addComment(Comment comment) {
-        this.commentList.add(comment);
-    }
+//    @OneToMany
+//    @Builder.Default
+//    @JoinColumn(name = "commentId")
+//    private List<Comment> commentList = new ArrayList<>();
+
+//    public void addComment(Comment comment) {
+//        this.commentList.add(comment);
+//    }
 
     public void update(String comment) {
         this.comment = comment;
+    }
+
+    public Comment(RequestCommentDto requestCommentDto, Post post) {
+        this.username = "댓글 작성자";
+        this.comment = requestCommentDto.getComment();
+        this.post = post;
     }
 
 }

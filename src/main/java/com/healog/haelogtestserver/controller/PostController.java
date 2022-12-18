@@ -2,6 +2,8 @@ package com.healog.haelogtestserver.controller;
 
 import com.healog.haelogtestserver.dto.RequestPostDto;
 import com.healog.haelogtestserver.dto.ResponseMessage;
+import com.healog.haelogtestserver.dto.ResponsePostDto;
+import com.healog.haelogtestserver.dto.ResponsePostListDto;
 import com.healog.haelogtestserver.service.PostService;
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +24,23 @@ public class PostController {
         ResponseMessage responseMessage = new ResponseMessage("success", "게시물 등록이 완료되었습니다.", null);
         return new ResponseEntity<ResponseMessage>(responseMessage, HttpStatus.OK);
     }
+
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<ResponseMessage> readOnePost(@PathVariable Long postId) {
+        ResponsePostDto responsePostDto = postService.readOnePost(postId);
+        ResponseMessage responseMessage = new ResponseMessage("success", "게시물 조회 성공", responsePostDto);
+
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+    }
+
+    @GetMapping("/post/user/{userId}")
+    public ResponseEntity<ResponseMessage> readUserPost(@PathVariable Long userId) {
+        ResponsePostListDto responsePostListDto = postService.readUserPost(userId);
+        ResponseMessage responseMessage = new ResponseMessage("success", "게시물 조회 성공", responsePostListDto);
+
+        return new ResponseEntity<ResponseMessage>(responseMessage, HttpStatus.OK);
+    }
+
 
     @PutMapping("/post/{postId}")
     public ResponseEntity<ResponseMessage> updatePost(@PathVariable Long postId, @RequestBody RequestPostDto requestPostDto) {
