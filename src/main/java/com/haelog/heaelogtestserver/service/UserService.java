@@ -1,9 +1,11 @@
 package com.haelog.heaelogtestserver.service;
 
 import com.haelog.heaelogtestserver.dto.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     public ResponseDto signup(RequestUserSignup requestUserSignup) {
         ResponseUserSignup responseUserSignup = new ResponseUserSignup(requestUserSignup);

@@ -1,5 +1,10 @@
 package com.haelog.heaelogtestserver.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
 public class RequestCreatePost {
 
     private String title;
@@ -7,16 +12,4 @@ public class RequestCreatePost {
     private String[] tag;
 
     private String content;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String[] getTag() {
-        return tag;
-    }
-
-    public String getContent() {
-        return content;
-    }
 }

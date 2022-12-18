@@ -1,5 +1,10 @@
 package com.haelog.heaelogtestserver.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
 public class ResponseUserSignup {
     private String loginId;
 
@@ -8,22 +13,6 @@ public class ResponseUserSignup {
     private String nickname;
 
     private String description;
-
-    public String getLoginId() {
-        return loginId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 
     public ResponseUserSignup(RequestUserSignup requestUserSignup) {
         this.loginId = requestUserSignup.getLoginId();
