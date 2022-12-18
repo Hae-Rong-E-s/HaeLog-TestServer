@@ -5,11 +5,14 @@ import com.healog.haelogtestserver.dto.ResponseCommentDto;
 import com.healog.haelogtestserver.dto.ResponseMessage;
 import com.healog.haelogtestserver.entity.Member;
 import com.healog.haelogtestserver.service.CommentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = {"댓글 API"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/post")
@@ -17,6 +20,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
+    @ApiOperation(value = "댓글 작성")
     @PostMapping("/{postId}/comment")
     public ResponseEntity<ResponseMessage> writeComment(
             @PathVariable Long postId,
@@ -28,6 +32,7 @@ public class CommentController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "댓글 수정")
     @PutMapping("/post/comment/{commentId}")
     public ResponseEntity<ResponseMessage> updateComment(
             @PathVariable Long commentId,
@@ -39,6 +44,7 @@ public class CommentController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "댓글 삭제")
     @DeleteMapping("/post/comment/{commentId}")
     public ResponseEntity<ResponseMessage> deleteComment(
             @PathVariable Long commentId
